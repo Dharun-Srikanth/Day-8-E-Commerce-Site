@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop4U</title>
+    <link
+      rel="shortcut icon"
+      href="src/images/favicon.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+      integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="src/js/script.js" defer></script>
+    <script src="src/js/search.js" defer></script>
+  </head>
+  <body class="bg-body-secondary">
+    <div class="container-fluid px-5 py-1">
+      <!-- NavBar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bolder logo" href="homepage.html"
+            ><img src="src/images/logo.png" alt="logo" height="50px"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNavAltMarkup"
+          >
+            <div class="active-cyan-3 active-cyan-4 mx-2 d-flex">
+              <input
+                class="form-control rounded-start-2 search"
+                type="text"
+                placeholder="Search Products"
+                aria-label="Search"
+                id="search"
+              />
+              <button
+                class="btn btn-primary rounded-end search-btn"
+                id="search-btn"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+
+            <div class="navbar-nav">
+              <a
+                class="nav-link fw-bold mx-2"
+                aria-current="page"
+                href="pages/User/userProducts.html"
+                id="prod"
+                ><i class="bi bi-clipboard-check"></i> Products</a
+              >
+              <a
+                class="nav-link fw-bold mx-2"
+                id="order"
+                href="pages/User/userOrders.html"
+                ><i class="bi bi-box-seam"></i> Orders</a
+              >
+              <a
+                class="nav-link fw-bold mx-2"
+                id="cart"
+                href="pages/User/userCart.html"
+                ><i class="bi bi-cart4"></i> Cart</a
+              >
+              <!-- <a href="../index.html" class="btn btn-outline-success mx-2"
+                >Log In</a
+              > -->
+              <div id="nav-div"></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Login Modal -->
+    <div
+      class="modal fade"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      id="signinModal"
+      tabindex="-1"
+      aria-labelledby="productLabel"
+      aria-hidden="true"
+    >
+      <!-- Modal Header -->
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modalTitle">Sign in</h4>
+            <button
+              class="close"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>Mail ID</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signin-mail"
+                  placeholder="Enter your mail"
+                />
+                <label>Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signin-pass"
+                  placeholder="Enter password"
+                />
+                <p class="mt-2">
+                  New customer?
+                  <span
+                    data-bs-target="#signupModal"
+                    data-bs-toggle="modal"
+                    class="text-primary bi-cursor-fill"
+                    >click here.</span
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="signin-btn" type="button" class="btn btn-success">
+              SignIn
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SignUp Modal -->
+    <div
+      class="modal fade"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      id="signupModal"
+      tabindex="-1"
+      aria-labelledby="productLabel"
+      aria-hidden="true"
+    >
+      <!-- Modal Header -->
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modalTitle">Sign in</h4>
+            <button
+              class="close"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>Username</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signup-name"
+                  placeholder="Enter your name"
+                  required
+                />
+                <label>Mail ID</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signup-mail"
+                  placeholder="Enter your mail"
+                />
+                <label>Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signup-pass"
+                  placeholder="Enter password"
+                />
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signup-c-pass"
+                  placeholder="Enter password again"
+                />
+                <p class="my-2" id="error"></p>
+              </div>
+              <p class="mt-2">
+                Already a customer?
+                <span
+                  data-bs-target="#signinModal"
+                  data-bs-toggle="modal"
+                  class="text-primary bi-cursor-fill"
+                  >click here.</span
+                >
+              </p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="signup" class="btn btn-success">
+              SignUp
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Section -->
+    <div class="mx-3 pb-2 mt-4 bg-white">
+      <h3 class="text-center py-1 pt-3 fw-bold">Shop by Category</h3>
+      <div class="categories d-flex justify-content-evenly pt-3 text-center">
+        <figure>
+          <img src="src/images/categories/all.png" alt="mobile" height="50px" />
+          <figcaption class="mt-1">All</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="src/images/categories/mobile-phone.png"
+            alt="mobile"
+            height="50px"
+          />
+          <figcaption class="mt-1">Mobiles</figcaption>
+        </figure>
+        <figure>
+          <img src="src/images/categories/men.png" alt="men" height="50px" />
+          <figcaption class="mt-1">Men's Wear</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="src/images/categories/dress.png"
+            alt="women"
+            height="50px"
+          />
+          <figcaption class="mt-1">Women's Wear</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="src/images/categories/grocery.png"
+            alt="grocery"
+            height="50px"
+          />
+          <figcaption class="mt-1">Grocery</figcaption>
+        </figure>
+        <figure>
+          <img src="src/images/categories/game.png" alt="game" height="50px" />
+          <figcaption class="mt-1">Games</figcaption>
+        </figure>
+        <figure>
+          <img src="src/images/categories/food.png" alt="game" height="50px" />
+          <figcaption class="mt-1">Food</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Carousel Section -->
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide mx-3 my-4 h-[200px]"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="4"
+          aria-label="Slide 5"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="src/images/carousel/carousel-1.jpg"
+            class="d-block w-100"
+            alt="1"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="src/images/carousel/carousel-2.png"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="src/images/carousel/carousel-3.png"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="src/images/carousel/carousel-4.png"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="src/images/carousel/carousel-5.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- BestSellers -->
+    <div class="top-brands m-3">
+      <div class="products">
+        <div class="prod-heading d-flex justify-content-between">
+          <h2 class="mt-5 fw-bold">Bestsellers</h2>
+          <p class="text-decoration-underline fw-bold pt-5">
+            <a href="pages/User/userProducts.html">view all</a>
+          </p>
+        </div>
+        <div class="prod-items row mt-4 g-2" id="bestsellers">
+          <!-- Product Card -->
+          <div
+            class="card col-1 mx-1 d-flex flex-column justify-content-end"
+            style="width: 18rem"
+          >
+            <img
+              src="https://www.jiomart.com/images/product/original/491997704/apple-iphone-13-256-gb-midnight-black-digital-o491997704-p590798558-3-202208221207.jpeg?im=Resize=(420,420)"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Iphone 13</h5>
+                <p>₹89,990</p>
+              </div>
+
+              <p class="card-text">
+                Apple iPhone 13 smartphone. Announced Sep 2021. Features 6.1″
+                display, Apple A15. 
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card col-1 mx-1 d-flex flex-column justify-content-end"
+            style="width: 18rem"
+          >
+            <img
+              src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1674051661/Croma%20Assets/Communication/Headphones%20and%20Earphones/Images/249502_0_au5k0n.png?tr=w-600"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Beats</h5>
+                <p>₹4,999</p>
+              </div>
+
+              <p class="card-text">
+                Beats by Dre brings you the best in headphones and music, plus
+                all things culture, style, and sports.
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card col-1 mx-1 d-flex flex-column justify-content-end"
+            style="width: 18rem"
+          >
+            <img
+              src="https://i5.walmartimages.com/asr/3d01e95a-8c43-4bc3-b2eb-ebac174f8c6b.f461ed9d0b8da83bfbdd0ec50d517b71.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Classic Spidey Tshirt</h5>
+                <p>₹299</p>
+              </div>
+
+              <p class="card-text">
+                The high-quality printed patterns and designs on our T-shirts,
+                hoodies, and other clothes.
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card col-1 mx-1 d-flex flex-column justify-content-end"
+            style="width: 18rem"
+          >
+            <img
+              src="https://i5.walmartimages.com/asr/98a7d412-12a4-4932-be71-82f55d92bdb2_1.10297e2f8c781071061b5710241923a9.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Gaming Mouse</h5>
+                <p>₹699</p>
+              </div>
+
+              <p class="card-text">
+                Amazon Basics RGB Gaming Wired Mouse with 7 programmable Buttons
+                I 13+1 Modes RGB Light
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card col-1 mx-1" style="width: 18rem">
+            <img
+              src="https://www.chocotown.in/cdn/shop/products/BountyChocolate57gmImported_Packof24_chocotown.jpg?v=1639550990"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body d-flex flex-column justify-content-end">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Bounty</h5>
+                <p>₹299</p>
+              </div>
+
+              <p class="card-text">
+                Bounty is a coconut-filled, chocolate-enrobed candy bar
+                manufactured by Mars.
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Brands -->
+    <div class="brands m-3">
+      <h2 class="mt-5 fw-bold">Top Brands</h2>
+      <div class="brand-section d-flex align-items-center">
+        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
+          <img
+            src="src/images/Brands/kfc.png"
+            class="card-img-top p-3 pt-4"
+            alt="..."
+          />
+        </div>
+
+        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
+          <img
+            src="src/images/Brands/allen-solly.jpg"
+            class="card-img-top m-4 w-75 mt-5"
+            alt="..."
+          />
+        </div>
+
+        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
+          <img
+            src="src/images/Brands/xbox.png"
+            class="card-img-top p-3 mt-4"
+            alt="..."
+          />
+        </div>
+
+        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
+          <img
+            src="src/images/Brands/samsung.png"
+            class="card-img-top mt-4 h-75"
+            alt="..."
+          />
+        </div>
+
+        <div class="card mt-4" style="width: 18rem; height: 12rem">
+          <img
+            src="src/images/Brands/raymond.jpg"
+            class="card-img-top mt-4 h-75"
+            alt="..."
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Deals -->
+    <div class="top-brands m-3">
+      <div class="products">
+        <div class="prod-heading d-flex justify-content-between">
+          <h2 class="mt-5 fw-bold">Top Deals</h2>
+          <p class="text-decoration-underline fw-bold pt-5">
+            <a href="pages/User/userProducts.html">view all</a>
+          </p>
+        </div>
+        <div class="prod-items row mt-4 g-2">
+          <!-- Product Card -->
+          <div class="card col-1 mx-1" style="width: 18rem">
+            <img
+              src="https://www.pbtech.co.nz/imgprod/G/A/GAMSNY5504__1.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">PS5</h5>
+                <p>₹54,990</p>
+              </div>
+
+              <p class="card-text">
+                The PlayStation 5 boasts impressive hardware, including a
+                powerful custom AMD processor
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card col-1 mx-1" style="width: 18rem">
+            <img
+              src="https://i.ebayimg.com/00/s/MTYwMFgxNjAw/z/SzIAAOSwA9tj6s6x/$_57.JPG?set_id=880000500F%3E"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Lenevo Legion</h5>
+                <p>₹69,999</p>
+              </div>
+
+              <p class="card-text">
+                Discover Lenovo Legion, cutting-edge gaming PCs and gear. Get
+                unmatched power & performance.
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card col-1 mx-1" style="width: 18rem">
+            <img
+              src="https://www.jiomart.com/images/product/original/rvnnsw0j9h/hi-fast-smash-20t-sports-cycle-for-7-to-10-years-boys-girls-85-assembled-product-images-orvnnsw0j9h-p591963831-0-202206061622.jpg?im=Resize=(420,420)"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Hi-Fast Bicycle</h5>
+                <p>₹2,999</p>
+              </div>
+
+              <p class="card-text">
+                HI-FAST 14 inch Sports Kids Cycle for Boys & Girls 2 to 5 Years
+                with Training Wheels
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card col-1 mx-1" style="width: 18rem">
+            <img
+              src="https://m.media-amazon.com/images/I/61kWGz4cDXL.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Hellmann's Mayonnaise</h5>
+                <p>₹150</p>
+              </div>
+
+              <p class="card-text">
+                Hellmann's Real mayonnaise is carefully crafted with quality
+                ingredients which are an excellent
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card col-1 mx-1" style="width: 18rem">
+            <img
+              src="https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/2/s/7/-original-imagmg6gktts6sfy.jpeg?q=90"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <div class="title-area d-flex justify-content-between fw-bold">
+                <h5 class="card-title">Samsung S23 Ultra</h5>
+                <p>₹1,24,000</p>
+              </div>
+
+              <p class="card-text">
+                Samsung Galaxy S23 Ultra, Android 13, One UI 5.1 ; Chipset,
+                Qualcomm SM8550-AC Snapdragon 8 Gen 2
+              </p>
+              <div class="btns d-flex justify-content-between">
+                <a href="#" class="btn btn-primary btn-md">Add to cart</a>
+                <a href="#" class="btn btn-success btn-md">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Site footer -->
+    <footer class="site-footer mt-5 bottom-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">
+              Welcome to Shop4U, your one-stop destination for premium quality
+              products at unbeatable prices. At Shop4U, we're dedicated to
+              providing you with an extensive range of products that meet your
+              every need. Whether you're searching for the latest gadgets,
+              trendy fashion items, or essential everyday products, we've got
+              you covered. We take pride in offering a seamless shopping
+              experience, ensuring that you find what you're looking for quickly
+              and easily. Shop with confidence at Shop4U and discover the best
+              deals on the products you love.
+            </p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="#">Mobiles</a></li>
+              <li>
+                <a href="#">Men's Wear</a>
+              </li>
+              <li>
+                <a href="#">Women's Wear</a>
+              </li>
+              <li>
+                <a href="#">Grocery</a>
+              </li>
+              <li>
+                <a href="#">Games</a>
+              </li>
+              <li>
+                <a href="#">Food</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">Products</a></li>
+              <li><a href="#">Orders</a></li>
+              <li>
+                <a href="#">Cart</a>
+              </li>
+              <li>
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">
+              Copyright &copy; 2023 All Rights Reserved by
+              <a href="#">Kumaran Systems</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li>
+                <a class="facebook" href="#"><i class="bi bi-facebook"></i></a>
+              </li>
+              <li>
+                <a class="twitter" href="#"><i class="bi bi-twitter-x"></i></a>
+              </li>
+              <li>
+                <a class="dribbble" href="#"><i class="bi bi-instagram"></i></a>
+              </li>
+              <li>
+                <a class="linkedin" href="#"><i class="bi bi-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="src/js/signinup.js"></script>
+  </body>
+</html>

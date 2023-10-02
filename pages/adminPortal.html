@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin portal</title>
+    <link rel="shortcut icon" href="../src/images/favicon.png" type="image/x-icon">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="../src/js/adminProduct.js" defer></script>
+  </head>
+  <body class="bg-body-tertiary">
+    <div class="container">
+      <!-- NavBar -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="adminPortal.html"
+            ><img src="../src/images/logo.png" alt="logo" height="50px"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNavAltMarkup"
+          >
+            <div class="navbar-nav">
+              <a
+                class="nav-link fw-bold mx-2 active"
+                aria-current="page"
+                href="adminPortal.html"
+                id="prod"
+                >Products</a
+              >
+              <a
+                class="nav-link fw-bold mx-2"
+                id="order"
+                href="orderStatus.html"
+                >Orders</a
+              >
+              <a href="../homepage.html" class="btn btn-outline-danger mx-2"
+                >Log Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Add Products -->
+      <div class="addProduct container d-flex justify-content-end my-1">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-outline-success btn-lg float-end mt-3"
+          data-bs-toggle="modal"
+          data-bs-target="#productModal"
+        >
+          Create Product
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          id="productModal"
+          tabindex="-1"
+          aria-labelledby="productLabel"
+          aria-hidden="true"
+        >
+          <!-- Modal Header -->
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle">Product Details</h4>
+                <button
+                  class="close"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label>Category</label>
+                    <select
+                      id="admin-category"
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option selected value="mobile">Mobiles</option>
+                      <option value="men">Men's Wear</option>
+                      <option value="women">Women's Wear</option>
+                      <option value="grocery">Grocery</option>
+                      <option value="games">Games</option>
+                      <option value="food">Food</option>
+                    </select>
+                    <label class="mt-2">Product ID</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="admin-prodID"
+                      placeholder="Product ID"
+                    />
+                    <label class="mt-2">Image URL</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="admin-imgURL"
+                      placeholder="url"
+                    />
+                    <label class="mt-2">Product Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="admin-product"
+                      placeholder="Product Name"
+                    />
+                    <label class="mt-2">Product Price</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="admin-price"
+                      placeholder="Product Price"
+                    />
+                    <label class="mt-2">Product Description</label>
+                    <textarea
+                      name="desc"
+                      id="admin-desc"
+                      class="form-control"
+                      cols="30"
+                      rows="5"
+                    ></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="add">
+                  Add Product
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Section -->
+      <div class="products">
+        <h3 class="mt-5">Products</h3>
+        <div class="prod-items row my-4 g-2" id="prod-cards">
+          <!-- Product Card -->
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../src/js/script.js"></script>
+  </body>
+</html>

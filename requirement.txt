@@ -1,0 +1,23 @@
+shop4u
+
+admin:
+1. Login
+2. Products:
+    1. Add Products
+    2. Remove Products
+    3. View Products
+3. Orders:
+    1. No. of users
+    2. No. of Products
+    3. Status Change
+
+User:
+1. Login
+2. View Products
+    1. add Products
+3. Cart
+        1. add Products
+        2. checkout
+4. Orders
+    1. View Orders
+    2. Status
