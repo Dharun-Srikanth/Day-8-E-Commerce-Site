@@ -62,7 +62,7 @@ if (signupBtn)
           mail: mail.value,
           pass: pass.value,
         });
-        window.location.href = "pages/User/homepage.html";
+        window.location.href = "pages/User/index.html";
       }
     } else {
       alert("SignUp Failed. Enter the values fully.");
@@ -87,7 +87,7 @@ if (signinBtn)
           store("login", true);
 
           login = load("login");
-          window.location.href = "homepage.html";
+          window.location.href = "index.html";
         } else {
           alert("Incorrect Username or Password");
         }
@@ -102,5 +102,5 @@ const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn)
   logoutBtn.addEventListener("click", () => {
     store("login", false);
-    window.location.href = "../../homepage.html";
+    window.location.href = "../../index.html";
   });
