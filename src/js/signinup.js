@@ -62,7 +62,7 @@ if (signupBtn)
           mail: mail.value,
           pass: pass.value,
         });
-        window.location.href = "pages/User/index.html";
+        window.location.href = "index.html";
       }
     } else {
       alert("SignUp Failed. Enter the values fully.");
