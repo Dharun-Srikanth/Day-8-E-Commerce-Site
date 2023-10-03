@@ -26,7 +26,7 @@ const loadCards = (data) => {
   // loading data
 
   for (let product of data) {
-    cardDiv += `<div class="card col-1 mx-2" style="width: 20rem">
+    cardDiv += `<div class="card col-1 mx-2" style="width: 19rem">
             <img
               src="${product.img}"
               class="card-img-top p-1"
@@ -42,8 +42,8 @@ const loadCards = (data) => {
                 ${product.description}
               </p>
               <div class="btns d-flex justify-content-between">
-                <button class="btn btn-primary btn-md prod-add" value="${product.id}">Add Product</button>
-                <button class="btn btn-danger btn-md prod-remove" value="${product.id}">Remove Product</button>
+                <button class="btn btn-primary btn-sm prod-add" value="${product.id}">Add Product</button>
+                <button class="btn btn-danger btn-sm prod-remove" value="${product.id}">Remove Product</button>
               </div>
             </div>
             </div>`;
