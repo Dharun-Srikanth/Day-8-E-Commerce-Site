@@ -1,3 +1,6 @@
+const toast = document.getElementById("toast-msg");
+const toastMsg = document.getElementById("toast-text");
+
 // admin products table
 let orderTable = document.getElementById("order-table");
 
@@ -24,10 +27,11 @@ let tableData = `<thead>
                 </thead>`;
 
 const loadTable = (data) => {
+  const user = sessionStorage.getItem("user");
   for (let table of data) {
     tableData += `<tbody>
                         <tr>
-                        <th scope="row">${table.id}</th>
+                        <th scope="row">${table.userID}</th>
                         <td>${table.name}</td>
                         <td>1</td>
                         <td>${table.price}</td>
@@ -75,7 +79,11 @@ updateBtn.forEach((btn) => {
             }
         });
         save("orderStatus", statusData);
-        alert("Status Updated");
+        toastMsg.innerText = "Status Updated";
+        toast.classList.add("d-block");
+        setTimeout(() => {
+          toast.classList.remove("d-block");
+        }, 5000);
       }
     });
   });

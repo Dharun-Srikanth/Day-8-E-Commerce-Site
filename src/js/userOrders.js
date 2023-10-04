@@ -45,8 +45,9 @@ let canceledTable = `<thead>
                     </thead>`;
 
 const loadTable = (data) => {
+    const user = sessionStorage.getItem("user");
     for(let table of data){
-        if(table.status === "Pending"){
+        if(table.status === "Pending" && table.userID===user){
             pendinTable += `<tbody>
                             <tr>
                             <th scope="row">${table.id}</th>
@@ -60,7 +61,7 @@ const loadTable = (data) => {
                         </tbody>`
 
             pending.innerHTML = pendinTable;
-        }else if(table.status === "Delivered"){
+        }else if(table.status === "Delivered" && table.userID===user){
             deliveredTable += `<tbody>
                                 <tr>
                                 <th scope="row">${table.id}</th>
@@ -74,7 +75,7 @@ const loadTable = (data) => {
                             </tbody>`
 
             delivered.innerHTML = deliveredTable;
-        }else if(table.status === "Canceled"){
+        }else if(table.status === "Canceled" && table.userID===user){
             canceledTable += `<tbody>
                                 <tr>
                                 <th scope="row">${table.id}</th>

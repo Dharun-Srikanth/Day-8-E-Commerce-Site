@@ -1,3 +1,6 @@
+const toast = document.getElementById("toast-msg");
+const toastMsg = document.getElementById("toast-text");
+
 // Load local Storage
 const retrieve = (key) => {
   return JSON.parse(window.localStorage.getItem(key));
@@ -14,32 +17,35 @@ let cardDiv = "";
 
 const total = document.getElementById("sub-total");
 
-
 // Load Cards
 const loadCards = (data) => {
   // loading data
   let sum = 0;
+  let user = sessionStorage.getItem("user");
   for (let product of data) {
-    cardDiv += `<div
-                class="item d-flex justify-content-around align-items-center w-100 mt-3"
-                >
-                <img src="${product.img}" alt="item" height="250px" />
-                <h5>${product.name}</h5>
-                <div class="counter d-flex h-25 align-items-center">
-                  <button id="my-button" class="btn btn-dark rounded-pill h-25 my-button" value="${product.id}">
-                    -
-                  </button>
-                  <p id="count" class="m-5 fs-4 count">1</p>
-                  <button id="my-button2" class="btn btn-dark rounded-pill h-25 my-button2" value="${product.id}">
-                    +
-                  </button>
-                </div>
-                <div class="price">
-                  <p>${product.price}</p>
-                  <p class="text-danger text-decoration-underline">Remove</p>
-                </div>
-                </div>`;
-    sum+=parseInt(product.price.replace(/[₹,]/g,""));
+    if (product.userID === user) {
+      cardDiv += `<div
+      class="item d-flex justify-content-around align-items-center w-100 mt-3"
+      >
+      <img src="${product.img}" alt="item" height="250px" />
+      <h5>${product.name}</h5>
+      <div class="counter d-flex h-25 align-items-center">
+        <button id="my-button" class="btn btn-dark rounded-pill h-25 my-button" value="${product.id}">
+          -
+        </button>
+        <p id="count" class="m-5 fs-4 count">1</p>
+        <button id="my-button2" class="btn btn-dark rounded-pill h-25 my-button2" value="${product.id}">
+          +
+        </button>
+      </div>
+      <div class="price">
+        <p class="fs-2">${product.price}</p>
+        <button class="btn btn-danger" id="${product.id}">Remove</button>
+      </div>
+      </div>`;
+      sum += parseInt(product.price.replace(/[₹,]/g, ""));
+    }
+    
   }
   cartProd.innerHTML = cardDiv;
 
@@ -52,26 +58,55 @@ const loadCards = (data) => {
                       <button id="checkout-btn" class="btn btn-dark rounded-5 px-5 w-100 m-3 fw-bold mt-3">
                         Checkout
                       </button>
-                    </div>`
+                    </div>`;
 };
 
 const data = retrieve("cart");
 loadCards(data);
 
+// Remove product from cart
+for (let btn of data) {
+  const removeBtn = document.getElementById(btn.id);
+  if(removeBtn)
+  removeBtn.addEventListener("click", () => {
+    if (removeBtn.id === btn.id) {
+      let index = data.findIndex((e) => e.id === btn.id);
+      data.splice(index, 1);
+      save("cart", data);
+      location.reload();
+    }
+  });
+}
+
 // checkout process
 const checkoutBtn = document.getElementById("checkout-btn");
+if (data.length === 0) {
+  checkoutBtn.classList.add("disabled");
+} else {
+  checkoutBtn.classList.remove("disabled");
+}
 checkoutBtn.addEventListener("click", () => {
   const cartData = retrieve("cart");
   let orderStatus = retrieve("orderStatus");
-  for(let cart of cartData){
-    orderStatus.push({...cart, status:"Pending"});
+  let user = sessionStorage.getItem("user");
+  for (let cart of cartData) {
+    if(cart.userID === user)
+      orderStatus.push({ ...cart, status: "Pending" });
   }
   save("orderStatus", orderStatus);
-  save("cart",[]);
-  alert("Payment successful! Check your order status in orders section");
+  // let indexVals = [];
+  for(let vals of cartData){
+    let index = data.findIndex(() => user === vals.userID);
+    cartData.splice(index,1);
+  }
+  save("cart", cartData);
+  toastMsg.innerText = "Payment successful. Check your orders page";
+    toast.classList.add("d-block");
+    setTimeout(() => {
+      toast.classList.remove("d-block");
+    }, 5000);
   window.location.href = "../../pages/User/userOrders.html";
 });
-
 
 // Counter
 let button = document.querySelectorAll(".my-button");
@@ -88,7 +123,7 @@ button.forEach((btn) => {
         if (count >= 2) {
           count--;
           display.forEach((text) => {
-            if(e.target.value === prod.id){
+            if (e.target.value === prod.id) {
               text.innerText = count;
             }
           });

@@ -31,13 +31,14 @@
     ></script>
     <script src="src/js/script.js" defer></script>
     <script src="src/js/search.js" defer></script>
+    <script src="src/js/userProduct.js" defer></script>
   </head>
   <body class="bg-body-secondary">
     <div class="container-fluid px-5 py-1">
       <!-- NavBar -->
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand fw-bolder logo" href="homepage.html"
+          <a class="navbar-brand fw-bolder logo" href="index.html"
             ><img src="src/images/logo.png" alt="logo" height="50px"
           /></a>
           <button
@@ -63,6 +64,7 @@
                 placeholder="Search Products"
                 aria-label="Search"
                 id="search"
+                list="results"
               />
               <button
                 class="btn btn-primary rounded-end search-btn"
@@ -70,13 +72,28 @@
               >
                 <i class="bi bi-search"></i>
               </button>
+
+              <datalist id="results">
+                <option value="Samsung"></option>
+                <option value="Mobile"></option>
+                <option value="Grocery"></option>
+                <option value="Men's Wear"></option>
+                <option value="Women's Wear"></option>
+                <option value="Games"></option>
+                <option value="Food"></option>
+                <option value="KFC"></option>
+                <option value="Allen Solly"></option>
+                <option value="XBOX"></option>
+                <option value="Raymond"></option>
+              </datalist>
+
             </div>
 
             <div class="navbar-nav">
               <a
                 class="nav-link fw-bold mx-2"
                 aria-current="page"
-                href="pages/User/userProducts.html"
+                href="pages/User/userProducts.html?id=all"
                 id="prod"
                 ><i class="bi bi-clipboard-check"></i> Products</a
               >
@@ -101,6 +118,27 @@
         </div>
       </nav>
     </div>
+
+    <!-- Toast Message for all -->
+    <div
+    class="toast toast-container m-5 align-items-center text-bg-primary border-0 bottom-0 end-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    id="toast-msg"
+  >
+    <div class="d-flex">
+      <div class="toast-body" id="toast-text">
+        
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
 
     <!-- Login Modal -->
     <div
@@ -260,46 +298,13 @@
     <div class="mx-3 pb-2 mt-4 bg-white">
       <h3 class="text-center py-1 pt-3 fw-bold">Shop by Category</h3>
       <div class="categories d-flex justify-content-evenly pt-3 text-center">
-        <figure>
+        <figure id="all">
           <img src="src/images/categories/all.png" alt="mobile" height="50px" />
           <figcaption class="mt-1">All</figcaption>
         </figure>
-        <figure>
-          <img
-            src="src/images/categories/mobile-phone.png"
-            alt="mobile"
-            height="50px"
-          />
-          <figcaption class="mt-1">Mobiles</figcaption>
-        </figure>
-        <figure>
-          <img src="src/images/categories/men.png" alt="men" height="50px" />
-          <figcaption class="mt-1">Men's Wear</figcaption>
-        </figure>
-        <figure>
-          <img
-            src="src/images/categories/dress.png"
-            alt="women"
-            height="50px"
-          />
-          <figcaption class="mt-1">Women's Wear</figcaption>
-        </figure>
-        <figure>
-          <img
-            src="src/images/categories/grocery.png"
-            alt="grocery"
-            height="50px"
-          />
-          <figcaption class="mt-1">Grocery</figcaption>
-        </figure>
-        <figure>
-          <img src="src/images/categories/game.png" alt="game" height="50px" />
-          <figcaption class="mt-1">Games</figcaption>
-        </figure>
-        <figure>
-          <img src="src/images/categories/food.png" alt="game" height="50px" />
-          <figcaption class="mt-1">Food</figcaption>
-        </figure>
+        <div id="category-area" class="d-flex  justify-content-between w-75">
+          <!-- category values -->
+        </div>
       </div>
     </div>
 
@@ -428,7 +433,7 @@
 
               <p class="card-text">
                 Apple iPhone 13 smartphone. Announced Sep 2021. Features 6.1″
-                display, Apple A15. 
+                display, Apple A15.
               </p>
               <div class="btns d-flex justify-content-between">
                 <a href="#" class="btn btn-primary btn-md">Add to cart</a>
@@ -544,46 +549,8 @@
     <!-- Top Brands -->
     <div class="brands m-3">
       <h2 class="mt-5 fw-bold">Top Brands</h2>
-      <div class="brand-section d-flex align-items-center">
-        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
-          <img
-            src="src/images/Brands/kfc.png"
-            class="card-img-top p-3 pt-4"
-            alt="..."
-          />
-        </div>
-
-        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
-          <img
-            src="src/images/Brands/allen-solly.jpg"
-            class="card-img-top m-4 w-75 mt-5"
-            alt="..."
-          />
-        </div>
-
-        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
-          <img
-            src="src/images/Brands/xbox.png"
-            class="card-img-top p-3 mt-4"
-            alt="..."
-          />
-        </div>
-
-        <div class="card mt-4 me-2" style="width: 18rem; height: 12rem">
-          <img
-            src="src/images/Brands/samsung.png"
-            class="card-img-top mt-4 h-75"
-            alt="..."
-          />
-        </div>
-
-        <div class="card mt-4" style="width: 18rem; height: 12rem">
-          <img
-            src="src/images/Brands/raymond.jpg"
-            class="card-img-top mt-4 h-75"
-            alt="..."
-          />
-        </div>
+      <div class="brand-section d-flex align-items-center" id="brand-area">
+        <!-- brand values -->
       </div>
     </div>
 

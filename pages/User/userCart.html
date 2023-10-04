@@ -61,17 +61,32 @@
                 placeholder="Search Products"
                 aria-label="Search"
                 id="search"
+                list="results"
               />
               <button class="btn btn-primary rounded-end search-btn">
                 <i class="bi bi-search"></i>
               </button>
+
+              <datalist id="results">
+                <option value="Samsung"></option>
+                <option value="Mobile"></option>
+                <option value="Grocery"></option>
+                <option value="Men's Wear"></option>
+                <option value="Women's Wear"></option>
+                <option value="Games"></option>
+                <option value="Food"></option>
+                <option value="KFC"></option>
+                <option value="Allen Solly"></option>
+                <option value="XBOX"></option>
+                <option value="Raymond"></option>
+              </datalist>
             </div>
 
             <div class="navbar-nav">
               <a
                 class="nav-link fw-bold mx-2"
                 aria-current="page"
-                href="./userProducts.html"
+                href="./userProducts.html?id=all"
                 id="prod"
                 ><i class="bi bi-clipboard-check"></i> Products</a
               >
@@ -278,6 +293,28 @@
         id="sub-total"
       ></div>
     </div>
+
+
+    <!-- Toast Message for all -->
+    <div
+    class="toast toast-container m-5 align-items-center text-bg-primary border-0 bottom-0 end-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    id="toast-msg"
+  >
+    <div class="d-flex">
+      <div class="toast-body" id="toast-text">
+        
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
 
     <!-- Footer -->
     <!-- Site footer -->

@@ -44,6 +44,22 @@ body{
   border-radius: 20px;
   height: 100px;
   width: 100px;
+  cursor: pointer;
+}
+
+.categories>div>figure:hover{
+  border: solid black 3px;
+  padding: 2px;
+  padding-top: 15px;
+  border-radius: 20px;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+
+/* Top brands */
+.brandCard:hover{
+  cursor: pointer;
 }
 
 /* Footer */

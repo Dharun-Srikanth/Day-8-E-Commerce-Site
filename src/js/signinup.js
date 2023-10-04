@@ -1,3 +1,7 @@
+// Toast message
+const toastArea = document.getElementById("toast-msg");
+const toastMsgArea = document.getElementById("toast-text");
+
 // Nav
 let nav = document.getElementById("nav-div");
 
@@ -53,9 +57,16 @@ if (signupBtn)
       pass.value != "" &&
       cpass.value != ""
     ) {
+      const user = load(mail.value);
       if (pass.value !== cpass.value) {
         err.innerText = "Mismatch password";
         err.classList = "text-danger";
+      } else if (user) {
+        toastMsgArea.innerText = "User Already Registered. Try Login";
+        toastArea.classList.add("d-block");
+        setTimeout(() => {
+          toast.classList.remove("d-block");
+        }, 3000);
       } else {
         store(mail.value, {
           name: name.value,
@@ -65,7 +76,11 @@ if (signupBtn)
         window.location.href = "index.html";
       }
     } else {
-      alert("SignUp Failed. Enter the values fully.");
+      toastMsgArea.innerText = "SignUp Failed. Enter all values";
+        toastArea.classList.add("d-block");
+        setTimeout(() => {
+          toast.classList.remove("d-block");
+        }, 3000);
     }
   });
 
@@ -85,14 +100,22 @@ if (signinBtn)
       if (data !== null) {
         if (data.mail === usrMail.value && data.pass === usrPass.value) {
           store("login", true);
-
+          sessionStorage.setItem("user", data.mail);
           login = load("login");
           window.location.href = "index.html";
         } else {
-          alert("Incorrect Username or Password");
+          toastMsgArea.innerText = "Incorrect Username or Password";
+        toastArea.classList.add("d-block");
+        setTimeout(() => {
+          toast.classList.remove("d-block");
+        }, 3000);
         }
       } else {
-        alert("User not found! Register first");
+        toastMsgArea.innerText = "User Not found. Register first!";
+        toastArea.classList.add("d-block");
+        setTimeout(() => {
+          toast.classList.remove("d-block");
+        }, 5000);
       }
     }
   });
@@ -104,3 +127,9 @@ if (logoutBtn)
     store("login", false);
     window.location.href = "../../index.html";
   });
+
+const user = sessionStorage.getItem("user");
+if(!user){
+  store("login",false);
+}
+

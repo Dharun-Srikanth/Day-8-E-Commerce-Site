@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>admin portal</title>
-    <link rel="shortcut icon" href="../src/images/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="../src/images/favicon.png"
+      type="image/x-icon"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -58,6 +62,27 @@
         </div>
       </nav>
 
+      <!-- Toast Message for all -->
+      <div
+        class="toast toast-container m-5 align-items-center text-bg-primary border-0 bottom-0 end-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        id="toast-msg"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="toast-text">
+            
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+
       <!-- Add Products -->
       <div class="addProduct container d-flex justify-content-end my-1">
         <!-- Button trigger modal -->
@@ -98,18 +123,15 @@
                 <form>
                   <div class="form-group">
                     <label>Category</label>
-                    <select
-                      id="admin-category"
-                      class="form-select"
-                      aria-label="Default select example"
-                    >
-                      <option selected value="mobile">Mobiles</option>
-                      <option value="men">Men's Wear</option>
-                      <option value="women">Women's Wear</option>
-                      <option value="grocery">Grocery</option>
-                      <option value="games">Games</option>
-                      <option value="food">Food</option>
-                    </select>
+                    <div id="category-section">
+                      <!-- Category values -->
+                    </div>
+
+                    <label class="mt-2">Brand</label>
+                    <div id="brand-section">
+                      <!-- Brand values -->
+                    </div>
+
                     <label class="mt-2">Product ID</label>
                     <input
                       type="text"
