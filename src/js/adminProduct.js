@@ -238,17 +238,8 @@ editProduct.forEach((edit) => {
         description: desc.value,
       };
       store("all", allProducts);
+      location.href = "https://dharun-srikanth.github.io/Day-8-E-Commerce-Site/pages/adminPortal.html";
     });
   });
 });
 
-// const category = document.getElementById("admin-category");
-// const brand = document.getElementById("admin-brand");
-// const imgURL = document.getElementById("admin-imgURL");
-// const prodName = document.getElementById("admin-product");
-// const price = document.getElementById("admin-price");
-// const desc = document.getElementById("admin-desc");
-// const prodID = document.getElementById("admin-prodID");
-// const addBtn = document.getElementById("add");
-// const toast = document.getElementById("toast-msg");
-// const toastMsg = document.getElementById("toast-text");

@@ -34,7 +34,7 @@ searchBtn.forEach((btn) => {
       }
     }
 
-    window.location.href = `pages/User/userProducts.html?${query}=${id}`;
+    window.location.replace(`https://dharun-srikanth.github.io/Day-8-E-Commerce-Site/pages/User/userProducts.html?${query}=${id}`)  ;
     
     // window.open(`https://www.flipkart.com/search?q=${input}`, "_blank");
     search.value = "";
