@@ -125,7 +125,7 @@ const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn)
   logoutBtn.addEventListener("click", () => {
     store("login", false);
-    window.location.href = "../../index.html";
+    window.location.href = "/index.html";
   });
 
 const user = sessionStorage.getItem("user");
