@@ -125,7 +125,8 @@ const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn)
   logoutBtn.addEventListener("click", () => {
     store("login", false);
-    window.location.href = "/index.html";
+    // window.location.href = "../../index.html";
+    window.location.href = "https://dharun-srikanth.github.io/Day-8-E-Commerce-Site/";
   });
 
 const user = sessionStorage.getItem("user");
