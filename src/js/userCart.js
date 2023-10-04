@@ -29,15 +29,15 @@ const loadCards = (data) => {
       >
       <img src="${product.img}" alt="item" height="250px" />
       <h5>${product.name}</h5>
-      <div class="counter d-flex h-25 align-items-center">
-        <button id="my-button" class="btn btn-dark rounded-pill h-25 my-button" value="${product.id}">
-          -
-        </button>
-        <p id="count" class="m-5 fs-4 count">1</p>
-        <button id="my-button2" class="btn btn-dark rounded-pill h-25 my-button2" value="${product.id}">
-          +
-        </button>
-      </div>
+      // <div class="counter d-flex h-25 align-items-center">
+      //   <button id="my-button" class="btn btn-dark rounded-pill h-25 my-button" value="${product.id}">
+      //     -
+      //   </button>
+      //   <p id="count" class="m-5 fs-4 count">1</p>
+      //   <button id="my-button2" class="btn btn-dark rounded-pill h-25 my-button2" value="${product.id}">
+      //     +
+      //   </button>
+      // </div>
       <div class="price">
         <p class="fs-2">${product.price}</p>
         <button class="btn btn-danger" id="${product.id}">Remove</button>
@@ -109,38 +109,38 @@ checkoutBtn.addEventListener("click", () => {
 });
 
 // Counter
-let button = document.querySelectorAll(".my-button");
-let button2 = document.querySelectorAll(".my-button2");
-let display = document.querySelectorAll(".count");
-let count = 1;
+// let button = document.querySelectorAll(".my-button");
+// let button2 = document.querySelectorAll(".my-button2");
+// let display = document.querySelectorAll(".count");
+// let count = 1;
 
-button.forEach((btn) => {
-  btn.addEventListener("click", function (e) {
-    console.log(e.target.value);
-    const prods = load("cart");
-    for (let prod of prods) {
-      if (e.target.value === prod.id) {
-        if (count >= 2) {
-          count--;
-          display.forEach((text) => {
-            if (e.target.value === prod.id) {
-              text.innerText = count;
-            }
-          });
-        }
-      }
-    }
-  });
-});
+// button.forEach((btn) => {
+//   btn.addEventListener("click", function (e) {
+//     console.log(e.target.value);
+//     const prods = load("cart");
+//     for (let prod of prods) {
+//       if (e.target.value === prod.id) {
+//         if (count >= 2) {
+//           count--;
+//           display.forEach((text) => {
+//             if (e.target.value === prod.id) {
+//               text.innerText = count;
+//             }
+//           });
+//         }
+//       }
+//     }
+//   });
+// });
 
-button2.forEach((btn) => {
-  btn.addEventListener("click", function (e) {
-    const prods = load("cart");
-    for (let prod of prods) {
-      if (e.target.value === prod.id) {
-        count++;
-        display.innerText = count;
-      }
-    }
-  });
-});
+// button2.forEach((btn) => {
+//   btn.addEventListener("click", function (e) {
+//     const prods = load("cart");
+//     for (let prod of prods) {
+//       if (e.target.value === prod.id) {
+//         count++;
+//         display.innerText = count;
+//       }
+//     }
+//   });
+// });
