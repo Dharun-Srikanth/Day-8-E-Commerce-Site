@@ -29,15 +29,7 @@ const loadCards = (data) => {
       >
       <img src="${product.img}" alt="item" height="250px" />
       <h5>${product.name}</h5>
-      // <div class="counter d-flex h-25 align-items-center">
-      //   <button id="my-button" class="btn btn-dark rounded-pill h-25 my-button" value="${product.id}">
-      //     -
-      //   </button>
-      //   <p id="count" class="m-5 fs-4 count">1</p>
-      //   <button id="my-button2" class="btn btn-dark rounded-pill h-25 my-button2" value="${product.id}">
-      //     +
-      //   </button>
-      // </div>
+
       <div class="price">
         <p class="fs-2">${product.price}</p>
         <button class="btn btn-danger" id="${product.id}">Remove</button>
