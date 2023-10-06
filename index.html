@@ -86,7 +86,6 @@
                 <option value="XBOX"></option>
                 <option value="Raymond"></option>
               </datalist>
-
             </div>
 
             <div class="navbar-nav">
@@ -121,24 +120,22 @@
 
     <!-- Toast Message for all -->
     <div
-    class="toast toast-container m-5 align-items-center text-bg-primary border-0 bottom-0 end-0"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    id="toast-msg"
-  >
-    <div class="d-flex">
-      <div class="toast-body" id="toast-text">
-        
+      class="toast toast-container m-5 align-items-center text-bg-primary border-0 bottom-0 end-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      id="toast-msg"
+    >
+      <div class="d-flex">
+        <div class="toast-body" id="toast-text"></div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
       </div>
-      <button
-        type="button"
-        class="btn-close btn-close-white me-2 m-auto"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
     </div>
-  </div>
 
     <!-- Login Modal -->
     <div
@@ -167,6 +164,20 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
+                <label>Admin Mail and Pass to check</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="mail: admin@kumaran.com - Pass: kumaran"
+                  disabled
+                />
+                <label>Sample User Mail and Pass to check</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="mail: dharun@gmail.com - Pass: pass"
+                  disabled
+                />
                 <label>Mail ID</label>
                 <input
                   type="email"
@@ -302,7 +313,7 @@
           <img src="src/images/categories/all.png" alt="mobile" height="50px" />
           <figcaption class="mt-1">All</figcaption>
         </figure>
-        <div id="category-area" class="d-flex  justify-content-between w-75">
+        <div id="category-area" class="d-flex justify-content-between w-75">
           <!-- category values -->
         </div>
       </div>
@@ -411,8 +422,11 @@
         <div class="prod-heading d-flex justify-content-between">
           <h2 class="mt-5 fw-bold">Bestsellers</h2>
           <p class="text-decoration-underline fw-bold pt-5">
-            <a href="pages/User/userProducts.html?id=all
-            ">view all</a>
+            <a
+              href="pages/User/userProducts.html?id=all
+            "
+              >view all</a
+            >
           </p>
         </div>
         <div class="prod-items row mt-4 g-2" id="bestsellers">

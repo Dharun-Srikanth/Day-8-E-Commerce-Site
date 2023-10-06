@@ -105,7 +105,7 @@ const loadCards = (data, id, name) => {
                       <button class="btn btn-success btn-md buy-now" value="${
                         product.id
                       }"><i class="bi bi-bag-heart-fill"></i> Buy now</button>
-                    </div>
+                    </div>   
                   </div>
                   </div>`;
     }
